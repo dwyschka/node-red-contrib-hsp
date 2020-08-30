@@ -1,0 +1,21 @@
+{
+  "name": "node-red-contrib-hsp",
+  "version": "1.0.0",
+  "description": "A node to control your HSP pellet stove with node-red",
+  "author": "Daniel Wyschka",
+  "keywords": [
+    "node-red",
+    "haas+sohn",
+    "pallazza"
+  ],
+  "license": "MIT",
+  "node-red": {
+    "nodes": {
+      "hsp": "hsp.js"
+    }
+  },
+  "dependencies": {
+    "md5": "^2.3.0",
+    "node-fetch": "^2.6.0"
+  }
+}

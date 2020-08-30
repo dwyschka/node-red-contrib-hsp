@@ -1,0 +1,109 @@
+<!-- ------------------------------------------------------------------------------------------ -->
+<script type="text/javascript">
+    RED.nodes.registerType('hsp',{
+        category: 'config',
+        defaults: {
+            name: {value: 'HSP-6', required: true},
+            host: {value:"localhost",required:true},
+            pin: {value:1234,required:true,validate:RED.validators.number()},
+            interval: {value:60, required:true, validate:RED.validators.number()}
+        },
+        label: function() {
+            return this.name;
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="hsp">
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-users"></i> Name</label>
+        <input type="text" id="node-config-input-name">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-host"><i class="fa fa-bookmark"></i> Host/IP</label>
+        <input type="text" id="node-config-input-host">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-pin"><i class="fa fa-key"></i> Pin</label>
+        <input type="text" id="node-config-input-pin">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-interval"><i class="fa fa-spinner"></i> Interval</label>
+        <input type="text" id="node-config-input-interval">
+    </div>
+</script>
+
+<!-- END -->
+<script type="text/javascript">
+    RED.nodes.registerType('hsp-get',{
+        category: 'hsp',
+        color: '#a41327',
+        defaults: {
+            name: {value:""},
+            hsp: {value: "", type: "hsp", required: true}
+        },
+        inputs:0,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name || "HSP Get";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="hsp-get">
+    <div class="form-row">
+        <label for="node-input-hsp"><i class="fa fa-cog"></i> hsp</label>
+        <input type="text" id="node-input-hsp" placeholder="hsp">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="hsp-get">
+    <p>A simple node that converts the message payloads into all lower-case characters</p>
+</script>
+
+
+<script type="text/javascript">
+    RED.nodes.registerType('hsp-set',{
+        category: 'hsp',
+        color: '#a41327',
+        defaults: {
+            name: {value:""},
+            hsp: {value: "", type: "hsp", required: true},
+            entity: {value:"sp_temp", required:true}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name || "HSP Set";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="hsp-set">
+    <div class="form-row">
+        <label for="node-input-hsp"><i class="fa fa-cog"></i> hsp</label>
+        <input type="text" id="node-input-hsp" placeholder="hsp">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-entity"><i class="fa fa-tag"></i> Type</label>
+        <select id="node-input-entity">
+            <option value="sp_temp">set temperature (number)</option>
+            <option value="wprg">set weekprogram (boolean)</option>
+            <option value="prg">set on (boolean)</option>
+        </select>
+    </div>
+</script>
+
+<script type="text/html" data-help-name="hsp-set">
+    <p>A simple node that converts the message payloads into all lower-case characters</p>
+</script>
