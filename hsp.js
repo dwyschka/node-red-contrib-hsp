@@ -1,4 +1,3 @@
-
 module.exports = function(RED) {
     const { Headers } = require('node-fetch');
     const fetch = require('node-fetch');
@@ -42,7 +41,7 @@ module.exports = function(RED) {
     function hspSet(config) {
         RED.nodes.createNode(this, config);
         let hsp = RED.nodes.getNode(config.hsp);
-
+		let context = this;
         this.on('input', async (msg) => {
             let nonce = await hspGetNonce(hsp.host);
             let hash = hspCalculatePin(nonce, hsp.pin);
@@ -61,8 +60,8 @@ module.exports = function(RED) {
 
             let _msg = {};
             _msg.payload = {
-                start: data.prg,
-                weekProgramStart: data.wprg,
+                start: res.prg,
+                weekProgramStart: res.wprg,
                 mode: res.mode,
                 isTemp: res.is_temp,
                 setTemp: res.sp_temp,
@@ -82,7 +81,7 @@ module.exports = function(RED) {
                 cleaning: res.cleaning_in,
                 zone: res.zone
             };
-            this.send(_msg);
+            context.send(_msg);
 
         });
     }
