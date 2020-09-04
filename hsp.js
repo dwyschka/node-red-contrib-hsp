@@ -13,6 +13,8 @@ module.exports = function(RED) {
 
             let msg = {};
             msg.payload = {
+                start: data.prg,
+                weekProgramStart: data.wprg,
                 mode: data.mode,
                 isTemp: data.is_temp,
                 setTemp: data.sp_temp,
@@ -59,6 +61,8 @@ module.exports = function(RED) {
 
             let _msg = {};
             _msg.payload = {
+                start: data.prg,
+                weekProgramStart: data.wprg,
                 mode: res.mode,
                 isTemp: res.is_temp,
                 setTemp: res.sp_temp,
