@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-hsp",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A node to control your HSP pellet stove with node-red",
   "author": "Daniel Wyschka",
   "keywords": [
@@ -17,5 +17,9 @@
   "dependencies": {
     "md5": "^2.3.0",
     "node-fetch": "^2.6.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dwyschka/node-red-contrib-hsp.git"
+},
 }
